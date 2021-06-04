@@ -38,4 +38,12 @@ class ToDoListAdapter : RecyclerView.Adapter<ToDoListAdapter.ToDoListAdapterView
     override fun getItemCount(): Int {
         return notesList.size
     }
+
+    fun setData(noteList : List<Note>){
+        notesList.clear()
+        for(note in noteList){
+            notesList.add(note)
+        }
+        notifyDataSetChanged()
+    }
 }
