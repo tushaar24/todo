@@ -13,4 +13,8 @@ class Repository(private val toDodao : NotesDao) {
     fun getAllNotes() : LiveData<List<Note>>{
        return  toDodao.getAllNotes()
     }
+
+    suspend fun deleteNote(note : Note){
+        toDodao.deleteNote(note)
+    }
 }

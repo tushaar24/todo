@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.R
 import com.example.todolist.databinding.FragmentTodolistBinding
 import com.example.todolist.fragment.addnote.AddNoteViewModel
@@ -41,6 +43,19 @@ class TodoList : Fragment() {
     private fun setUpRecyclerViewAdapter() {
         binding.rvTodoList.adapter = mAdapter
         binding.rvTodoList.layoutManager = LinearLayoutManager(requireContext())
+
+        swipeToDelete(binding.rvTodoList)
+    }
+
+    private fun swipeToDelete(rvTodoList: RecyclerView) {
+        val swipeToDelete = object : SwipeToDelete(){
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val deleteItem = mAdapter.notesList[viewHolder.adapterPosition]
+                viewModel.deleteNote(deleteItem)
+            }
+        }
+        val itemTouchHelper = ItemTouchHelper(swipeToDelete)
+        itemTouchHelper.attachToRecyclerView(rvTodoList)
     }
 
     override fun onDestroyView() {

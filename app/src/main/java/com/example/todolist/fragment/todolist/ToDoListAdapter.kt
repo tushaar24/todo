@@ -8,7 +8,7 @@ import com.example.todolist.databinding.ToDoItemBinding
 
 class ToDoListAdapter : RecyclerView.Adapter<ToDoListAdapter.ToDoListAdapterViewHolder>() {
 
-    private var notesList : MutableList<Note> = mutableListOf()
+  var notesList : MutableList<Note> = mutableListOf()
 
      class ToDoListAdapterViewHolder(private val binding : ToDoItemBinding)
         : RecyclerView.ViewHolder(binding.root){

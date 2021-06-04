@@ -21,4 +21,8 @@ class AddNoteViewModel(application: Application) : AndroidViewModel(application)
         repository.addNewNote(note)
     }
     val noteList : LiveData<List<Note>> = repository.getAllNotes()
+
+    fun deleteNote(note : Note) = viewModelScope.launch {
+        repository.deleteNote(note)
+    }
 }
