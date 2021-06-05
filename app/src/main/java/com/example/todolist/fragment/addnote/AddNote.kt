@@ -12,9 +12,6 @@ class AddNote : Fragment() {
 
     private var _binding: FragmentAddNoteBinding? = null
     private val viewModel by lazy { AddNoteViewModel(requireActivity().application) }
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
