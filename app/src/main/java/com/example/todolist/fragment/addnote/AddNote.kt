@@ -7,8 +7,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.todolist.R
 import com.example.todolist.data.entity.Note
 import com.example.todolist.databinding.FragmentAddNoteBinding
-import kotlinx.android.synthetic.main.fragment_add_note.*
-import kotlinx.android.synthetic.main.to_do_item.*
 
 class AddNote : Fragment() {
 
@@ -39,9 +37,9 @@ class AddNote : Fragment() {
 
          when(item.itemId){
             R.id.add_note -> {
-                val note = Note(etTitle.text.toString(), etDescription.text.toString())
+                val note = Note(binding.etTitle.text.toString(), binding.etDescription.text.toString())
                 viewModel.addNewNote(note)
-                findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+                findNavController().navigate(R.id.action_AddNote_to_ToDoList)
                 return true
             }
          }

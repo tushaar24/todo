@@ -3,26 +3,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/ToDoList">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/ToDoList"
         android:name="com.example.todolist.fragment.todolist.TodoList"
-        android:label="@string/first_fragment_label"
+        android:label="@string/todolist"
         tools:layout="@layout/fragment_todolist">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_ToDoList_to_AddNote"
+            app:destination="@id/AddFragment" />
+        <action
+            android:id="@+id/action_ToDoList_to_modifyNote"
+            app:destination="@id/modifyNote" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
+        android:id="@+id/AddFragment"
         android:name="com.example.todolist.fragment.addnote.AddNote"
-        android:label="@string/second_fragment_label"
+        android:label="@string/Addnote"
         tools:layout="@layout/fragment_add_note">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_AddNote_to_ToDoList"
+            app:destination="@id/ToDoList" />
+    </fragment>
+    <fragment
+        android:id="@+id/modifyNote"
+        android:name="com.example.todolist.fragment.modifynote.ModifyNote"
+        android:label="ModifyNote" >
+        <argument
+            android:name="currentNote"
+            app:argType="com.example.todolist.data.entity.Note" />
+        <action
+            android:id="@+id/action_modifyNote_to_ToDoList"
+            app:destination="@id/ToDoList" />
     </fragment>
 </navigation>

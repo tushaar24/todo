@@ -25,4 +25,12 @@ class AddNoteViewModel(application: Application) : AndroidViewModel(application)
     fun deleteNote(note : Note) = viewModelScope.launch {
         repository.deleteNote(note)
     }
+
+    fun deleteAllNote() = viewModelScope.launch {
+        repository.deleteAllNote()
+    }
+
+    fun updateNote(note : Note) = viewModelScope.launch {
+        repository.updateNote(note)
+    }
 }
