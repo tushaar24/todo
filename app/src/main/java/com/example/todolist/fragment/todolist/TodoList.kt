@@ -2,6 +2,7 @@ package com.example.todolist.fragment.todolist
 
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
@@ -13,7 +14,7 @@ import com.example.todolist.data.entity.Note
 import com.example.todolist.databinding.FragmentTodolistBinding
 import com.example.todolist.fragment.addnote.AddNoteViewModel
 
-class TodoList : Fragment() {
+class TodoList : Fragment() , SearchView.OnQueryTextListener {
 
     private var _binding: FragmentTodolistBinding? = null
     lateinit  var mAdapter : ToDoListAdapter
@@ -40,19 +41,6 @@ class TodoList : Fragment() {
 
         setHasOptionsMenu(true)
         return binding.root
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_list_note_delete_all, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.menu_delete_all ->{
-                viewModel.deleteAllNote()
-            }
-        }
-        return super.onOptionsItemSelected(item)
     }
 
     private fun setUpRecyclerViewAdapter() {
@@ -82,5 +70,43 @@ class TodoList : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_list_note_delete_all, menu)
+
+        val search = menu.findItem(R.id.menu_search)
+        val searchView = search.actionView as? SearchView
+        searchView?.isSubmitButtonEnabled = true
+        searchView?.setOnQueryTextListener(this)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.menu_delete_all ->{
+                viewModel.deleteAllNote()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        if(query != null){
+            val searchQuery = "%$query%"
+            viewModel.searchNote(searchQuery).observe(viewLifecycleOwner, {
+                mAdapter.setData(it)
+            })
+        }
+        return true
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        if(newText != null){
+            val searchQuery = "%$newText%"
+            viewModel.searchNote(searchQuery).observe(viewLifecycleOwner, {
+                mAdapter.setData(it)
+            })
+        }
+        return true
     }
 }

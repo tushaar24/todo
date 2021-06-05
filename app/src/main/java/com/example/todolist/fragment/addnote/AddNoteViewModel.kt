@@ -33,4 +33,6 @@ class AddNoteViewModel(application: Application) : AndroidViewModel(application)
     fun updateNote(note : Note) = viewModelScope.launch {
         repository.updateNote(note)
     }
+
+    fun searchNote(query : String) : LiveData<List<Note>> = repository.searchNote(query)
 }

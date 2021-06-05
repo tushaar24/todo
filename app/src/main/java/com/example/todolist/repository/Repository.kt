@@ -25,4 +25,6 @@ class Repository(private val toDodao : NotesDao) {
     suspend fun updateNote(note : Note) {
         toDodao.updateNote(note)
     }
+
+    fun searchNote(query : String) : LiveData<List<Note>> = toDodao.searchDatabase(query)
 }

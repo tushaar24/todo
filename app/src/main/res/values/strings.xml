@@ -17,4 +17,6 @@
     <string name="todolist">ToDo List</string>
     <string name="Addnote">Add Note</string>
     <string name="update">update</string>
+    <string name="search">search</string>
+    <string name="delete_all">Delete All</string>
 </resources>
