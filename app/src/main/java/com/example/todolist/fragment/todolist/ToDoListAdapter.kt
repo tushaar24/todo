@@ -2,14 +2,9 @@ package com.example.todolist.fragment.todolist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModel
-import androidx.navigation.NavDirections
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.data.entity.Note
 import com.example.todolist.databinding.ToDoItemBinding
-import com.example.todolist.fragment.addnote.AddNoteViewModel
-import com.example.todolist.fragment.modifynote.ModifyNote
-import java.lang.Exception
 
 class ToDoListAdapter(val onClick : (note : Note) -> Unit) : RecyclerView.Adapter<ToDoListAdapter.ToDoListAdapterViewHolder>() {
 

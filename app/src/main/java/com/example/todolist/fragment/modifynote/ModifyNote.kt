@@ -1,7 +1,6 @@
 package com.example.todolist.fragment.modifynote
 
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -10,12 +9,12 @@ import androidx.navigation.fragment.navArgs
 import com.example.todolist.R
 import com.example.todolist.data.entity.Note
 import com.example.todolist.databinding.FragmentModifyNoteBinding
-import com.example.todolist.fragment.addnote.AddNoteViewModel
+import com.example.todolist.viewmodel.CommonViewModel
 
 class ModifyNote : Fragment() {
 
     private var _binding : FragmentModifyNoteBinding? = null
-    private val viewModel by viewModels<AddNoteViewModel>()
+    private val viewModel by viewModels<CommonViewModel>()
 
     private val binding get() = _binding!!
 

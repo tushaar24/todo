@@ -1,4 +1,4 @@
-package com.example.todolist.fragment.addnote
+package com.example.todolist.viewmodel
 
 import android.app.Application
 import android.provider.ContactsContract
@@ -13,7 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.DisposableHandle
 import kotlinx.coroutines.launch
 
-class AddNoteViewModel(application: Application) : AndroidViewModel(application) {
+class CommonViewModel(application: Application) : AndroidViewModel(application) {
     private val todoDao = Database.getDatabase(application).getDao()
     private val repository = Repository(todoDao)
 

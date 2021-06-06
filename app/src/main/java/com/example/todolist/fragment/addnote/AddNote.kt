@@ -7,11 +7,12 @@ import androidx.navigation.fragment.findNavController
 import com.example.todolist.R
 import com.example.todolist.data.entity.Note
 import com.example.todolist.databinding.FragmentAddNoteBinding
+import com.example.todolist.viewmodel.CommonViewModel
 
 class AddNote : Fragment() {
 
     private var _binding: FragmentAddNoteBinding? = null
-    private val viewModel by lazy { AddNoteViewModel(requireActivity().application) }
+    private val viewModel by lazy { CommonViewModel(requireActivity().application) }
     private val binding get() = _binding!!
 
     override fun onCreateView(

@@ -12,13 +12,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.R
 import com.example.todolist.data.entity.Note
 import com.example.todolist.databinding.FragmentTodolistBinding
-import com.example.todolist.fragment.addnote.AddNoteViewModel
+import com.example.todolist.viewmodel.CommonViewModel
 
 class TodoList : Fragment() , SearchView.OnQueryTextListener {
 
     private var _binding: FragmentTodolistBinding? = null
     lateinit  var mAdapter : ToDoListAdapter
-    private val viewModel by lazy { AddNoteViewModel(requireActivity().application) }
+    private val viewModel by lazy { CommonViewModel(requireActivity().application) }
 
     // This property is only valid between onCreateView and
     // onDestroyView.
